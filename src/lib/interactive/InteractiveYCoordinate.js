@@ -37,6 +37,8 @@ class InteractiveYCoordinate extends Component {
 				index,
 				yValue,
 			}
+		}, () => {
+			this.props.onDrag(index, yValue);
 		});
 	}
 	handleDragComplete(moreProps) {
@@ -110,6 +112,7 @@ class InteractiveYCoordinate extends Component {
 
 InteractiveYCoordinate.propTypes = {
 	onChoosePosition: PropTypes.func.isRequired,
+	onDrag: PropTypes.func.isRequired,
 	onDragComplete: PropTypes.func.isRequired,
 	onSelect: PropTypes.func,
 	onDelete: PropTypes.func,
@@ -162,6 +165,7 @@ InteractiveYCoordinate.propTypes = {
 
 InteractiveYCoordinate.defaultProps = {
 	onChoosePosition: noop,
+	onDrag: noop,
 	onDragComplete: noop,
 	onSelect: noop,
 	onDelete: noop,
