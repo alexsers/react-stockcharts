@@ -32,12 +32,15 @@ class InteractiveYCoordinate extends Component {
 		this.state = {};
 	}
 	handleDrag(index, yValue) {
-		this.setState({
-			override: {
-				index,
-				yValue,
-			}
-		});
+		const isDrag = this.props.isDrag(index, yValue);
+		if (isDrag || isDrag === undefined) {
+			this.setState({
+				override: {
+					index,
+					yValue,
+				}
+			});
+		}
 	}
 	handleDragComplete(moreProps) {
 		const { override } = this.state;
@@ -110,6 +113,7 @@ class InteractiveYCoordinate extends Component {
 
 InteractiveYCoordinate.propTypes = {
 	onChoosePosition: PropTypes.func.isRequired,
+	isDrag: PropTypes.func.isRequired,
 	onDragComplete: PropTypes.func.isRequired,
 	onSelect: PropTypes.func,
 	onDelete: PropTypes.func,
@@ -162,6 +166,7 @@ InteractiveYCoordinate.propTypes = {
 
 InteractiveYCoordinate.defaultProps = {
 	onChoosePosition: noop,
+	isDrag: noop,
 	onDragComplete: noop,
 	onSelect: noop,
 	onDelete: noop,
