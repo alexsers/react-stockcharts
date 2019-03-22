@@ -111,7 +111,6 @@ class InteractiveYCoordinate extends Component {
 		ctx.fillText(text, rect.x + 10, y);
 		const newEdge = {
 			...edge,
-			textFill,
 			fontFamily,
 			fontSize,
 			opacity: bgOpacity

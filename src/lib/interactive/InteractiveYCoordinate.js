@@ -156,6 +156,8 @@ InteractiveYCoordinate.propTypes = {
 
 			fill: PropTypes.string.isRequired,
 			fillOpacity: PropTypes.number.isRequired,
+
+			textFill: PropTypes.string.isRequired,
 		})
 	}).isRequired,
 
@@ -200,6 +202,7 @@ InteractiveYCoordinate.defaultProps = {
 			strokeOpacity: 1,
 			strokeWidth: 1,
 
+			textFill: "#6574CD",
 			fill: "#FFFFFF",
 			fillOpacity: 1,
 			orient: "right",
