@@ -122,11 +122,23 @@ const sell = {
 const buy = {
 	...InteractiveYCoordinate.defaultProps.defaultPriceCoordinate,
 	stroke: "#1F9D55",
-	textFill: "#1F9D55",
+	bgFill: "#1F9D55",
+	textFill: "#FFFFFF",
 	text: "Buy 120",
+	strokeWidth: 2,
+	textBox: {
+		...InteractiveYCoordinate.defaultProps.defaultPriceCoordinate.textBox,
+		left: 20,
+		closeIcon: {
+			...InteractiveYCoordinate.defaultProps.defaultPriceCoordinate.textBox.closeIcon,
+			fill: "#FFFFFF",
+		},
+	},
 	edge: {
 		...InteractiveYCoordinate.defaultProps.defaultPriceCoordinate.edge,
-		stroke: "#1F9D55"
+		stroke: "#1F9D55",
+		fill: "#1F9D55",
+		textFill: "#FFFFFF",
 	}
 };
 

@@ -42,12 +42,13 @@ class ClickableShape extends Component {
 
 		this.closeIcon = { x, y };
 		ctx.beginPath();
+        if (selected || hovering) {
+            ctx.lineWidth = strokeWidth + 1;
+        } else {
+            ctx.lineWidth = strokeWidth;
+        }
+        console.log(strokeWidth, ctx.lineWidth);
 		ctx.strokeStyle = hexToRGBA(stroke, strokeOpacity);
-		if (selected || hovering) {
-			ctx.lineWidth = strokeWidth + 1;
-		} else {
-			ctx.lineWidth = strokeWidth;
-		}
 
 		ctx.fillStyle = hexToRGBA(textBox.closeIcon.fill, strokeOpacity);
 		ctx.fillRect(rectX, rectY, textBox.closeIcon.width * 2 + 2, textBox.height);

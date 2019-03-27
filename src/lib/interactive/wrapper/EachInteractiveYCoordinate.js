@@ -149,6 +149,7 @@ class EachInteractiveYCoordinate extends Component {
 					fontWeight={fontWeight}
 					fontSize={fontSize}
 					textBox={textBox}
+					strokeWidth={strokeWidth}
 
 					stroke={stroke}
 					strokeOpacity={strokeOpacity}
