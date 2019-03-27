@@ -110,8 +110,8 @@ function helper(props, moreProps) {
 	const line1 = {
 		x1: 0,
 		x2: width,
-		y1: mouseXY[1],
-		y2: mouseXY[1],
+		y1: Math.round(mouseXY[1]),
+		y2: Math.round(mouseXY[1]),
 		stroke, strokeDasharray, opacity,
 	};
 	const x = customX(props, moreProps);
