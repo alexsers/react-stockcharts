@@ -104,7 +104,7 @@ function helper(props, moreProps, ctx) {
 		+ textBox.closeIcon.width / 2;
 	const rectX = x - textBox.closeIcon.width - 1;
 
-	const y = yScale(yValue);
+	const y = Math.round(yScale(yValue));
 	const rectY = y - textBox.height / 2;
 
 	return [x, y, rectX, rectY];
