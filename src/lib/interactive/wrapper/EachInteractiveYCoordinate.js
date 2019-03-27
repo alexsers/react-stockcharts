@@ -139,7 +139,9 @@ class EachInteractiveYCoordinate extends Component {
 				/>
 				<ClickableShape
 					show
-					hovering={closeIconHover}
+					selected={selected && !closeIconHover}
+					hovering={hover || closeIconHover}
+					hoveringCloseIcon={closeIconHover}
 					text={text}
 					yValue={yValue}
 					fontFamily={fontFamily}

@@ -84,10 +84,10 @@ class InteractiveYCoordinate extends Component {
 
 		this.width = textBox.padding.left
 			+ ctx.measureText(text).width
-			+ textBox.padding.right
-			+ textBox.closeIcon.padding.left
-			+ textBox.closeIcon.width
-			+ textBox.closeIcon.padding.right;
+			+ textBox.padding.right;
+		// + textBox.closeIcon.padding.left
+		// + textBox.closeIcon.width
+		// + textBox.closeIcon.padding.right;
 
 		ctx.setLineDash(getStrokeDasharrayCanvas(strokeDasharray));
 		ctx.moveTo(x1, y);

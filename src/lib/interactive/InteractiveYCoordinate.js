@@ -147,6 +147,8 @@ InteractiveYCoordinate.propTypes = {
 					right: PropTypes.number.isRequired,
 				}),
 				width: PropTypes.number.isRequired,
+
+				fill: PropTypes.string.isRequired,
 			})
 		}).isRequired,
 		edge: PropTypes.shape({
@@ -195,6 +197,8 @@ InteractiveYCoordinate.defaultProps = {
 			closeIcon: {
 				padding: { left: 5, right: 8 },
 				width: 8,
+
+				fill: "#FFFFFF",
 			}
 		},
 		edge: {

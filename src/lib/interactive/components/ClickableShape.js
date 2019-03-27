@@ -36,20 +36,28 @@ class ClickableShape extends Component {
 		return false;
 	}
 	drawOnCanvas(ctx, moreProps) {
-		const { stroke, strokeWidth, strokeOpacity, hovering, textBox } = this.props;
+		const { stroke, strokeWidth, strokeOpacity, hoveringCloseIcon, textBox, selected, hovering } = this.props;
 
-		const [x, y] = helper(this.props, moreProps, ctx);
+		const [x, y, rectX, rectY] = helper(this.props, moreProps, ctx);
 
 		this.closeIcon = { x, y };
 		ctx.beginPath();
-
-		ctx.lineWidth = hovering ? strokeWidth + 1 : strokeWidth;
 		ctx.strokeStyle = hexToRGBA(stroke, strokeOpacity);
+		if (selected || hovering) {
+			ctx.lineWidth = strokeWidth + 1;
+		} else {
+			ctx.lineWidth = strokeWidth;
+		}
+
+		ctx.fillStyle = hexToRGBA(textBox.closeIcon.fill, strokeOpacity);
+		ctx.fillRect(rectX, rectY, textBox.closeIcon.width * 2 + 2, textBox.height);
+		ctx.strokeRect(rectX, rectY, textBox.closeIcon.width * 2 + 2, textBox.height);
 		const halfWidth = textBox.closeIcon.width / 2;
 		ctx.moveTo(x - halfWidth, y - halfWidth);
 		ctx.lineTo(x + halfWidth, y + halfWidth);
 		ctx.moveTo(x - halfWidth, y + halfWidth);
 		ctx.lineTo(x + halfWidth, y - halfWidth);
+		ctx.lineWidth = hoveringCloseIcon ? strokeWidth + 1 : strokeWidth;
 		ctx.stroke();
 	}
 	renderSVG() {
@@ -94,10 +102,12 @@ function helper(props, moreProps, ctx) {
 		+ textBox.padding.right
 		+ textBox.closeIcon.padding.left
 		+ textBox.closeIcon.width / 2;
+	const rectX = x - textBox.closeIcon.width - 1;
 
 	const y = yScale(yValue);
+	const rectY = y - textBox.height / 2;
 
-	return [x, y];
+	return [x, y, rectX, rectY];
 
 }
 
@@ -106,7 +116,9 @@ ClickableShape.propTypes = {
 	strokeOpacity: PropTypes.number.isRequired,
 	strokeWidth: PropTypes.number.isRequired,
 	textBox: PropTypes.object.isRequired,
-	hovering: PropTypes.bool,
+	hoveringCloseIcon: PropTypes.bool,
+	selected: PropTypes.bool.isRequired,
+	hovering: PropTypes.bool.isRequired,
 	interactiveCursorClass: PropTypes.string,
 	show: PropTypes.bool,
 	onHover: PropTypes.func,
@@ -120,6 +132,10 @@ ClickableShape.defaultProps = {
 	fillOpacity: 1,
 	strokeOpacity: 1,
 	strokeWidth: 1,
+	fill: "#FFFFFF",
+
+	selected: false,
+	hovering: false,
 };
 
 export default ClickableShape;
