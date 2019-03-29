@@ -99,7 +99,7 @@ function helper(props, moreProps) {
 
 	const type = "horizontal";
 
-	const y = yScale(price);
+	const y = Math.round(yScale(price));
 	const show = (price <= upperYValue && price >= lowerYValue);
 
 	const coordinate = displayFormat(yScale.invert(y));
